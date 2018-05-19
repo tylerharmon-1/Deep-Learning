@@ -7,4 +7,7 @@
 <p align="center">
   <img width ="500" height="300" src="https://github.com/weretew/Autonomous-Tour-Guide-Robot/blob/master/lstm_steering_plot.png?raw=true"
 </p>
-  
+
+<p align="center">
+  <img width="500" height="300" src="https://github.com/weretew/Autonomous-Tour-Guide-Robot/blob/master/model_accuracy_comparison.png?raw=true"
+       </p>
