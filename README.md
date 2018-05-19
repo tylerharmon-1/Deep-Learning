@@ -11,8 +11,9 @@
 
 
 <h2 align="left"> Deployment </h2>
-<p align="left"> The base of the robot consists of a modified Traxxas Slash 4x4 utilizing a stock brushed motor and a nickel-metal hydride (NiMH) battery in order to reduce and better control the speed of the robot. The robot was built utilizing the [Donkeycar](https://github.com/wroscoe/donkey) 
-platform, consisting of a Raspberry Pi, PCA 9685 servo driver, and an RPLidar A2 360 laser scanner.</p>
+<p align="left"> The base of the robot consists of a modified Traxxas Slash 4x4 utilizing a stock brushed motor and a nickel-metal hydride (NiMH) battery in order to reduce and better control the speed of the robot. The robot was built utilizing the
+  
+[Donkeycar](https://github.com/wroscoe/donkey) platform, consisting of a Raspberry Pi, PCA 9685 servo driver, and an RPLidar A2 360 laser scanner.</p>
 
 
 <p align="center">
