@@ -19,7 +19,7 @@
 <p align="left"> In order to prevent the neural network from learning ever-changing objects in the course environment, e.g. moved furniture, the robot's camera was oriented at approximately 53° from the horizontal towards the ceiling.  In doing so, the network learned the course's ceiling lights and tiles, which enabled the robot to consistently navigate the course environment without being affected by ambient light or temporarily moved objects.
 </p>
 
-<p align="left"> In attempting to find the best possible model, several different neural network architectures were analyzed.  Figure 1 below demonstrates how the models performed with respect to the accuracy metric on the test set.
+<p align="left"> In attempting to find the best possible model, several different neural network architectures (e.g. linear and categorical convnets, as well as an RNN Long Short Term Memory (LSTM)) were analyzed.  Figure 1 below demonstrates how the models performed with respect to the accuracy metric on the test set.
 </p>
 
 <p align="center">
