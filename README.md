@@ -1,4 +1,4 @@
-# Autonomous Tour-guide Robot
+# Autonomous Tour-Guide Robot
 Senior practicum project - autonomous tour-guide robot
 
 
