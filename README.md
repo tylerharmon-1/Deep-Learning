@@ -30,9 +30,13 @@
   
 <p align="left"> Figure 1 clearly demonstrates that the LSTM model achieves an amazingly high level of accuracy. Compared with the other models the LSTM outperforms the Categorical and Linear Convnets by approximately 18% and 75% respectively. The success of the LSTM is most likely attributed to how the model processes sequences of images as opposed to making a decison based on one image every x amount of seconds. Information from past sequences of images can be used in a later time step when making a decision.    
 <h2 align="left"> Results </h2>
+
+<p align="left"> After determining the LSTM model to be the best performing model for the course, the robot was tested in a 'live' setting with dynamic human movement as well as relatively static objects in the course environment.  Figure 2 below presents a comparison of the actual versus predicted steering angles of the LSTM model.</p>
 <p align="center">
   <img width ="700" height="300" src="https://github.com/weretew/Autonomous-Tour-Guide-Robot/blob/master/lstm_steering_plot.png?raw=true"
 </p>
 <h5 align="center"> Figure 2: LSTM Steering Angle Actual vs. Predicited </h5>
 
+<p align="left">
+</p>
 
