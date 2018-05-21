@@ -37,6 +37,6 @@
 </p>
 <h5 align="center"> Figure 2: LSTM Steering Angle Actual vs. Predicited </h5>
 
-<p align="left">
+<p align="left"> Compared with the other models, the LSTM achieved the lowest loss of 0.0063 MSE, which was hands down the lowest loss of any other model.  Furthermore, what was most facinating about the differences between the models, was how they physically performed in the course environment. The LSTM had a noticeably more stable performance than any other model.  This resulted in significantly reducing the amount of sway from the top iPad head piece, thus relieving stress in the robot's bottom chassis and reducing any possible chances of tipping. The LSTM model also greatly smoothed and stablilized the robot's navigation path, creating a much more enjoyable and less erratic tour experience.  
 </p>
 
