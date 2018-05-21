@@ -19,7 +19,7 @@
 <p align="left"> In order to prevent the neural network from learning ever-changing objects in the course environment, e.g. moved furniture, the robot's camera was oriented at approximately 53° from the horizontal towards the ceiling.  In doing so, the network learned the course's ceiling lights and tiles, which enabled the robot to consistently navigate the course environment without being affected by ambient light or temporarily moved objects.
 </p>
 
-<p align="left"> In attempting to find the best possible model, several different neural network architectures (e.g. linear and categorical convnets, as well as an RNN Long Short Term Memory (LSTM)) were analyzed.  Figure 1 below demonstrates how the models performed with respect to the accuracy metric on the test set.
+<p align="left"> In attempting to find the best possible model, several different neural network architectures (e.g. linear and categorical convnets, as well as an RNN Long Short Term Memory (LSTM)) were analyzed.  Figure 1 below demonstrates how the models performed with respect to the accuracy metric on the test set,
 </p>
 
 <p align="center">
@@ -31,7 +31,7 @@
 <p align="left"> Figure 1 clearly demonstrates that the LSTM model achieves an amazingly high level of accuracy. Compared with the other models the LSTM outperforms the Categorical and Linear Convnets by approximately 18% and 75% respectively. The success of the LSTM is most likely attributed to how the model processes sequences of images as opposed to making a decison based on one image every x amount of seconds. Information from past sequences of images can be used in a later time step when making a decision.    
 <h2 align="left"> Results </h2>
 
-<p align="left"> After determining the LSTM model to be the best performing model for the course, the robot was tested in a 'live' setting with dynamic human movement as well as relatively static objects in the course environment.  Figure 2 below presents a comparison of the actual versus predicted steering angles of the LSTM model.</p>
+<p align="left"> After determining the LSTM model to be the best performing model for the course, the robot was tested in a 'live' setting with dynamic human movement as well as relatively static objects in the course environment.  Figure 2 below presents a comparison of the actual versus predicted steering angles of the LSTM model,</p>
 <p align="center">
   <img width ="700" height="300" src="https://github.com/weretew/Autonomous-Tour-Guide-Robot/blob/master/lstm_steering_plot.png?raw=true"
 </p>
