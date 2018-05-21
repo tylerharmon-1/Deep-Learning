@@ -28,7 +28,7 @@
   
 <h5 align="center"> Figure 1: Comparison of Model Test Accuracy </h5>
   
-<p align="left"> Figure 1 clearly demonstrates that the LSTM model achieves an amazingly high level of accuracy. Compared with the other models the LSTM outperforms the Categorical and Linear Convnets by approximately 18% and 75% respectively.    
+<p align="left"> Figure 1 clearly demonstrates that the LSTM model achieves an amazingly high level of accuracy. Compared with the other models the LSTM outperforms the Categorical and Linear Convnets by approximately 18% and 75% respectively. The success of the LSTM is most likely attributed to how the model processes sequences of images as opposed to making a decison based on one image every x amount of seconds. Information from past sequences of images can be used in a later time step when making a decision.    
 <h2 align="left"> Results </h2>
 <p align="center">
   <img width ="700" height="300" src="https://github.com/weretew/Autonomous-Tour-Guide-Robot/blob/master/lstm_steering_plot.png?raw=true"
