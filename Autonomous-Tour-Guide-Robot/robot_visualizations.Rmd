@@ -1,0 +1,249 @@
+---
+title: "robot_visualizations_RAWOUTPUT"
+author: "Tyler Harmon"
+date: "5/22/2018"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+
+```{r cars}
+
+```
+
+
+
+
+```{r pressure, echo=FALSE}
+##libraries
+library(ggplot2)
+library(ggthemes)
+library(scales)
+library(reshape)
+#load data & base graph
+#data=read.csv(file.choose())
+##
+########Load CNN_Linear##############
+cnn_linear_df=read.csv("~/projects/donkey/d2/models/camera_upward/2018-04-19_final_tawn_8.0_linear.csv")
+
+data=cnn_linear_df
+
+p <- ggplot(data,aes(x=X, y=user_angle)) + geom_line(color="darkblue") +
+  geom_line(aes(x=X, y=pilot_angle),color="orange") + ylab("Steering Angle") +
+  xlab("Records") + ggtitle("Comparison of Actual vs Predicted Steering") +
+  scale_fill_continuous(guide="legend")
+p
+#ggplot(data,aes(x=X, y=user_angle)) + geom_line() + geom_point()
+
+# #q <- ggplot(data,aes(x=X, y=user_throttle)) + geom_line(color="darkblue") +
+#   geom_line(aes(x=X, y=pilot_throttle),color="orange") + ylab("Throttle Power") +
+#   xlab("Records") + ggtitle("Comparison of Actual vs Predicted Throttle") +
+#   scale_fill_continuous(guide="legend")
+# #q
+
+#plot(data$user_throttle~data$X)
+#plot(data$pilot_throttle~data$X)
+
+p + theme_economist() + scale_color_economist() + theme(legend.position = "right")
+
+############################################CNN_Linear##########################################
+#df=data
+df=cnn_linear_df
+df<-data.frame(df$X,df$pilot_angle,df$user_angle)
+names(df)<-c("X", "pilot_angle", "user_angle")
+#head(df)
+#tail(df)
+df <-melt(df, id=c("X"))
+#df
+p2 <- ggplot(df, aes(x=X, y=value, colour=variable)) + geom_line(size=0.7) + ylab("Steering Angle") +
+  xlab("Records") + ggtitle("Convnet (Linear) Actual vs Predicted Steering Angle \nLoss=0.008322 (MSE), Accuracy= 0.234") +
+  scale_color_manual(values=c("darkblue","orange"),labels=c("Actual","Predicted")) + 
+  labs(color="")
+ 
+p2 
+p2 + theme_economist(base_family="Verdana") + theme(legend.position = "right") 
+
+
+########################################################################################
+cnn_linear_df2=read.csv("~/projects/donkey/d2/models/camera_upward/2018-04-19_final_tawn_8.0_lineartraining_inf.csv")
+df2=cnn_linear_df2
+#head(df2)
+w<-ggplot(df2,aes(y=angle_out_acc, x=epoch)) + geom_line(color="darkblue") +
+  geom_line(aes(y=val_angle_out_acc, x=epoch),color="orange") + ylab("Accuracy") +
+  xlab("Epoch") + ggtitle("Training vs Validation Angle Accuracy") +
+  scale_fill_continuous(guide="legend")
+w
+
+x<-ggplot(df2,aes(y=loss, x=epoch)) + geom_line(color="darkblue") +
+  geom_line(aes(y=val_loss, x=epoch),color="orange") + ylab("Loss") +
+  xlab("Epoch") + ggtitle("Loss vs Validation Loss") +
+  scale_fill_continuous(guide="legend")
+x
+
+r<-ggplot(df2,aes(y=throttle_out_acc, x=epoch)) + geom_line(color="darkblue") +
+  geom_line(aes(y=val_throttle_out_acc, x=epoch),color="orange") + ylab("Accuracy") +
+  xlab("Epoch") + ggtitle("Training vs Validation Throttle Accuracy") +
+  scale_fill_continuous(guide="legend")
+r
+########################################################################################
+##############################RNN_LSTM##################################################
+lstm_df=read.csv("~/projects/donkey/d2/models/camera_upward/2018-04-23_final_tawn_brushed_1.1_rnn.csv")
+data=lstm_df
+p <- ggplot(data,aes(x=X, y=user_angle)) + geom_line(color="darkblue") +
+  geom_line(aes(x=X, y=pilot_angle),color="orange") + ylab("Steering Angle") +
+  xlab("Records") + ggtitle("Comparison of Actual vs Predicted Steering") +
+  scale_fill_continuous(guide="legend")
+p
+#ggplot(data,aes(x=X, y=user_angle)) + geom_line() + geom_point()
+
+# q <- ggplot(data,aes(x=X, y=user_throttle)) + geom_line(color="darkblue") +
+#   geom_line(aes(x=X, y=pilot_throttle),color="orange") + ylab("Throttle Power") +
+#   xlab("Records") + ggtitle("Comparison of Actual vs Predicted Throttle") +
+#   scale_fill_continuous(guide="legend")
+# q
+
+#plot(data$user_throttle~data$X)
+#plot(data$pilot_throttle~data$X)
+
+p + theme_economist() + scale_color_economist() + theme(legend.position = "right")
+
+df=data
+df<-data.frame(df$X,df$pilot_angle,df$user_angle)
+names(df)<-c("X", "pilot_angle", "user_angle")
+#head(df)
+#tail(df)
+df <-melt(df, id=c("X"))
+#df
+p2 <- ggplot(df, aes(x=X, y=value, colour=variable)) + geom_line(size=0.7) + ylab("Steering Angle") +
+  xlab("Records") + ggtitle("RNN LSTM Actual vs Predicted Steering Angle \nLoss=0.0063 (MSE), Accuracy=0.986") +
+  scale_color_manual(values=c("darkblue","orange","red","green"),labels=c("Actual","Predicted")) + 
+  labs(color="")
+
+#p2 
+p2 + theme_economist(base_family="Verdana") + theme(legend.position = "right") 
+
+########LSTM_Accuracy#########
+lstm_df2=read.csv("~/projects/donkey/d2/models/camera_upward/2018-04-23_final_tawn_brushed_1.1_lstmtraining_inf.csv")
+df2=lstm_df2
+#head(df2)
+w<-ggplot(df2,aes(y=acc, x=epoch)) + geom_line(color="darkblue") +
+  geom_line(aes(y=val_acc, x=epoch),color="orange") + ylab("Accuracy") +
+  xlab("Epoch") + ggtitle("Training vs Validation Angle Accuracy") +
+  scale_fill_continuous(guide="legend")
+w
+
+x<-ggplot(df2,aes(y=loss, x=epoch)) + geom_line(color="darkblue") +
+  geom_line(aes(y=val_loss, x=epoch),color="orange") + ylab("Loss") +
+  xlab("Epoch") + ggtitle("Training vs Validation Loss") +
+  scale_fill_continuous(guide="legend")
+x
+
+r<-ggplot(df2,aes(y=mean_absolute_error, x=epoch)) + geom_line(color="darkblue") +
+  geom_line(aes(y=val_mean_absolute_error, x=epoch),color="orange") + ylab("Accuracy") +
+  xlab("Epoch") + ggtitle("Training vs Validation Mean Absolutle Error") +
+  scale_fill_continuous(guide="legend")
+r
+
+y<-ggplot(df2,aes(y=loss,x=val_loss))+geom_point()
+y
+
+##################################################################################
+##########################CNN_Cat################################################
+cnn_cat_df=read.csv("~/projects/donkey/d2/models/camera_upward/2018-04-17_final_tawn_brushed_2.0_cat.csv")
+#head(cnn_linear_df)
+#names(data)
+#head(data)
+#str(data)
+#plot(data$user_angle~data$X,type='l')
+#points(data$user_angle~data$X)
+#plot(data$pilot_angle~data$X,type='l')
+
+
+##
+cnn_cat_df=data
+p <- ggplot(data,aes(x=X, y=user_angle)) + geom_line(color="darkblue") +
+  geom_line(aes(x=X, y=pilot_angle),color="orange") + ylab("Steering Angle") +
+  xlab("Records") + ggtitle("Comparison of Actual vs Predicted Steering") +
+  scale_fill_continuous(guide="legend")
+p
+#ggplot(data,aes(x=X, y=user_angle)) + geom_line() + geom_point()
+
+# q <- ggplot(data,aes(x=X, y=user_throttle)) + geom_line(color="darkblue") +
+#   geom_line(aes(x=X, y=pilot_throttle),color="orange") + ylab("Throttle Power") +
+#   xlab("Records") + ggtitle("Comparison of Actual vs Predicted Throttle") +
+#   scale_fill_continuous(guide="legend")
+# q
+
+#plot(data$user_throttle~data$X)
+#plot(data$pilot_throttle~data$X)
+
+p + theme_economist() + scale_color_economist() + theme(legend.position = "right")
+##########################
+#df=data
+df=cnn_cat_df
+df<-data.frame(df$X,df$pilot_angle,df$user_angle)
+names(df)<-c("X", "pilot_angle", "user_angle")
+#head(df)
+#tail(df)
+df <-melt(df, id=c("X"))
+#df
+p2 <- ggplot(df, aes(x=X, y=value, colour=variable)) + geom_line(size=0.7) + ylab("Steering Angle") +
+  xlab("Records") + ggtitle("Convnet (Categorical) Actual vs Predicted Steering Angle \nLoss=0.519 (Log Loss), Accuracy=0.808") +
+  scale_color_manual(values=c("darkblue","orange","red","green"),labels=c("Actual","Predicted")) + 
+  labs(color="")
+
+#p2 
+p2 + theme_economist(base_family="Verdana") + theme(legend.position = "right") 
+########################CNN_Cat_Accuracy#############################################################
+cnn_cat_df2=read.csv("~/projects/donkey/d2/models/camera_upward/2018-04-17_final_tawn_brushed_2.0_cattraining_inf.csv")
+df2=cnn_cat_df2
+#head(df2)
+w<-ggplot(df2,aes(y=angle_out_acc, x=epoch)) + geom_line(color="darkblue") +
+  geom_line(aes(y=val_angle_out_acc, x=epoch),color="orange") + ylab("Accuracy") +
+  xlab("Epoch") + ggtitle("Training vs Validation Angle Accuracy") +
+  scale_fill_continuous(guide="legend")
+w
+
+x<-ggplot(df2,aes(y=loss, x=epoch)) + geom_line(color="darkblue") +
+  geom_line(aes(y=val_loss, x=epoch),color="orange") + ylab("Loss") +
+  xlab("Epoch") + ggtitle("Loss vs Validation Loss") +
+  scale_fill_continuous(guide="legend")
+x
+
+# r<-ggplot(df2,aes(y=throttle_out_acc, x=epoch)) + geom_line(color="darkblue") +
+#   geom_line(aes(y=val_throttle_out_acc, x=epoch),color="orange") + ylab("Accuracy") +
+#   xlab("Epoch") + ggtitle("Training vs Validation Throttle Accuracy") +
+#   scale_fill_continuous(guide="legend")
+# r
+#####################################################################
+##########################Accuracy Bars##############################
+cnn_linear_acc=0.234
+cnn_cat_acc=0.808
+lstm_acc=0.986
+
+acc=c(0.234,0.808,0.986)
+#acc = c(23.4,80.8,98.6)
+acc_labels=c("CNN Linear","CNN Categorical","RNN LSTM")
+acc_labels=factor(acc_labels,levels= c("CNN Linear","CNN Categorical","RNN LSTM"))
+acc_df=data.frame(acc,acc_labels)
+#str(acc_df)
+#head(acc_df)
+c4 = ggplot(acc_df,aes(x=acc_labels,y=acc)) + geom_bar(stat="identity",fill="orange", 
+            colour="black", width = 0.5) + geom_text(aes(label=acc), label=paste(format(acc*100), "%") ,vjust=1.5, colour="white",size=5) +
+            ylab("Test Accuracy") + xlab("") + scale_y_continuous(labels=percent) +
+            ggtitle("Model Test Accuracy Comparison")
+c4 + theme_economist(base_family="Verdana") + theme(legend.position = "right") 
+#####################################################################
+
+
+```
+
+
