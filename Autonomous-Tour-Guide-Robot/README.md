@@ -45,7 +45,7 @@
 <p align="left"> 
   
   [Donkeycar](https://github.com/wroscoe/donkey)
-   : autonomous RC car racing platform.</p>
+   : Autonomous rc car racing platform.</p>
   
 <p align="left">
   
