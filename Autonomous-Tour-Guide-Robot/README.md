@@ -2,7 +2,7 @@
 <p align="left"> Senior practicum project - autonomous tour-guide robot - donkeycar platform </p>
 
 <p align="center">
-  <img width="500" height="300" src="https://github.com/weretew/Autonomous-Tour-Guide-Robot/blob/master/tour_guide_robot.gif?raw=true">
+  <img width="500" height="300" src="https://github.com/tylerharmon-1/Deep-Learning/blob/master/Autonomous-Tour-Guide-Robot/tour_guide_robot.gif?raw=true">
 </p>
 
 
@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <img width="700" height="300" src="https://github.com/weretew/Autonomous-Tour-Guide-Robot/blob/master/model_accuracy_comparison.png?raw=true"
+  <img width="700" height="300" src="https://github.com/tylerharmon-1/Deep-Learning/blob/master/Autonomous-Tour-Guide-Robot/model_accuracy_comparison.png?raw=true"
 </p>
   
 <h5 align="center"> Figure 1: Comparison of Model Test Accuracy </h5>
@@ -33,7 +33,7 @@
 
 <p align="left"> After determining the LSTM model to be the best performing model for the course, the robot was tested in a 'live' setting with dynamic human movement as well as relatively static objects in the course environment.  Figure 2 below presents a comparison of the actual versus predicted steering angles of the LSTM model,</p>
 <p align="center">
-  <img width ="700" height="300" src="https://github.com/weretew/Autonomous-Tour-Guide-Robot/blob/master/lstm_steering_plot.png?raw=true"
+  <img width ="700" height="300" src="https://github.com/tylerharmon-1/Deep-Learning/blob/master/Autonomous-Tour-Guide-Robot/lstm_steering_plot.png?raw=true"
 </p>
 <h5 align="center"> Figure 2: LSTM Steering Angle Actual vs. Predicited </h5>
 
